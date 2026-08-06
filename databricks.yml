@@ -1,10 +1,10 @@
-# Databricks Asset Bundle config for this project.
+# Databricks Asset Bundle config for the AI Movie Night Planner.
 # Deploy with: databricks bundle deploy -t dev   (or -t prod)
-# This wires up the ticker-news embeddings notebook as a scheduled Workflow
-# (see resources/ingest_ticker_news_embeddings_job.yml).
+# Bundled resources (jobs) are wired up under resources/*.yml. The embeddings
+# pipeline job is added in phase P6 of docs/MOVIE_NIGHT_PLAN.md.
 
 bundle:
-  name: databricks-lakebase-app-day-2
+  name: databricks-ai-bootcamp-capstone
 
 include:
   - resources/*.yml
