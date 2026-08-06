@@ -29,7 +29,8 @@
 # MAGIC The pipeline authenticates with your TMDB **API Read Access Token** (v4
 # MAGIC auth - the long `eyJ...` token on your TMDB API settings page), stored in a
 # MAGIC Databricks secret so it never lives in code. Create it once by running the
-# MAGIC repo's helper script (with the Databricks CLI configured):
+# MAGIC repo's helper script - from a Databricks notebook, or locally with your
+# MAGIC Databricks workspace auth configured:
 # MAGIC
 # MAGIC ```bash
 # MAGIC python setup_tmdb_secret.py   # prompts for the read access token
