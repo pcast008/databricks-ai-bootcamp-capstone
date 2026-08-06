@@ -234,7 +234,7 @@ Each phase is independently runnable/verifiable. Build order top to bottom.
 - [x] P0 — Foundations
 - [x] P1 — Schema
 - [x] P2 — Seed data
-- [ ] P3 — Movie data pipeline
+- [x] P3 — Movie data pipeline
 - [ ] P4 — App shell
 - [ ] P5a Groups & members
 - [ ] P5b Catalog & detail

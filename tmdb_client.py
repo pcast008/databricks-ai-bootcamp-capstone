@@ -96,3 +96,34 @@ class TmdbClient:
             f"/movie/{movie_id}",
             params={"append_to_response": append_to_response},
         )
+
+    def search_movie(self, query: str, page: int = 1) -> list[dict]:
+        """
+        GET /search/movie - live title search. Returns the "results" array
+        (20 matches per page). Used by the app to find movies to nominate that
+        may not be in the ingested catalog.
+        """
+        if not query or not query.strip():
+            return []
+        data = self.get("/search/movie", params={"query": query.strip(), "page": page})
+        return data.get("results", [])
+
+    def get_watch_providers(self, movie_id: int, region: str | None = None) -> dict:
+        """
+        GET /movie/{id}/watch/providers - where-to-watch data, powered by
+        JustWatch. TMDB returns a "results" map keyed by ISO-3166 country code;
+        each entry has optional flatrate/rent/buy provider arrays plus a
+        JustWatch "link". Pass `region` (e.g. "US") to return just that country,
+        else the full map.
+        """
+        results = self.get(f"/movie/{movie_id}/watch/providers").get("results", {})
+        if region:
+            return results.get(region.upper(), {})
+        return results
+
+    def get_videos(self, movie_id: int) -> list[dict]:
+        """
+        GET /movie/{id}/videos - trailers, teasers, clips. Returns the "results"
+        array; each item has site/type/key (e.g. a YouTube key) for embedding.
+        """
+        return self.get(f"/movie/{movie_id}/videos").get("results", [])
