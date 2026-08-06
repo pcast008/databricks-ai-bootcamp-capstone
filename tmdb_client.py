@@ -1,9 +1,9 @@
 """
 Client for the TMDB (The Movie Database) API.
 
-Mirrors the shape of `massive_client.py`: the API credential is stored in a
-Databricks secret scope and resolved at runtime via the Databricks SDK - it is
-never stored in code, env files, or app.yaml.
+The API credential is stored in a Databricks secret scope and resolved at
+runtime via the Databricks SDK - it is never stored in code, env files, or
+app.yaml.
 
 TMDB issues two credentials on your API settings page. This client uses the
 **API Read Access Token** (v4 auth - the long `eyJ...` JWT), passed as a Bearer
